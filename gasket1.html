@@ -4,31 +4,39 @@
 <html>
 	<head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
-<title>CS734 Chaos Game Siepinksi Gasket</title>
+<title>CS733 Chaos Game Siepinksi Gasket</title>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
 	#version 300 es
 	precision mediump float;
+
+     in vec4 vColor;
 
 	out vec4 fColor;
 
 	void
 	main()
 	{
-    		fColor =  vec4(0.0, 0.0, 1.0, 1.0);
-			 
+    		//fColor =  vec4(0.0, 0.0, 1.0, 1.0);
+			 fColor = vColor;
 	}
 </script>
 
 <script id="vertex-shader" type="x-shader/x-vertex">
 	#version 300 es
+
     	in vec4 vPosition;
+        in vec4 aColor;
+        out vec4 vColor;
 
     	void
     	main()
     	{
+			
 		gl_PointSize = 1.0;
-		gl_Position = vPosition;
+		gl_Position = vec4(vPosition);
+		vColor=aColor;
+		
  	}
 </script>
 
@@ -37,9 +45,10 @@
 
 <script src="common/initShaders.js"></script>
 <script src="common/MVne.js"></script>
-<script src="gasket.js"></script>
+<script src="gasketpractice.js"></script>
 	</head>
 	<body>
+		
 	      <canvas id="gl-canvas" width="512" height="512">
 	      Oops ... your browser doesn't support the HTML5 canvas element
 	      </canvas>
